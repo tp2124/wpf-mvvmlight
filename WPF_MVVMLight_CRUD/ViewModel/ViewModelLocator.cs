@@ -32,16 +32,16 @@ namespace WPF_MVVMLight_CRUD.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-               SimpleIoc.Default.Register<IDataAccessService, DataAccessService>();
-            ////}
+            if (ViewModelBase.IsInDesignModeStatic)
+            {
+                // Create design time view services and models
+                SimpleIoc.Default.Register<IDataAccessService, LocalDataService>();
+            }
+            else
+            {
+                // Create run time view services and models
+                SimpleIoc.Default.Register<IDataAccessService, LocalDataService>();
+            }
 
             SimpleIoc.Default.Register<MainViewModel>();
         }

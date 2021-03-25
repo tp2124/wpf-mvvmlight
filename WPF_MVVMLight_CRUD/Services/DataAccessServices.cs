@@ -1,18 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using WPF_MVVMLight_CRUD.Model;
 
 namespace WPF_MVVMLight_CRUD.Services
 {
-
-    /// <summary>
-    /// The Interface defining methods for Create Employee and Read All Employees  
-    /// </summary>
-    public interface IDataAccessService
-    {
-        ObservableCollection<EmployeeInfo> GetEmployees();
-        int CreateEmployee(EmployeeInfo Emp);
-    }
-    
     /// <summary>
     /// Class implementing IDataAccessService interface and implementing
     /// its methods by making call to the Entities using CompanyEntities object
@@ -40,6 +31,10 @@ namespace WPF_MVVMLight_CRUD.Services
             context.SaveChanges();
             return Emp.EmpNo;
         }
-        
+
+        public EmployeeInfo GetEmpoyee(int EmpId)
+        {
+            return context.EmployeeInfoes.FirstOrDefault(e => e.EmpNo == EmpId);
+        }
     }
 }

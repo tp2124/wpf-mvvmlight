@@ -103,7 +103,9 @@
     <Compile Include="Model\EmployeeInfo.cs">
       <DependentUpon>CompanyEDMX.tt</DependentUpon>
     </Compile>
-    <Compile Include="Services\Services.cs" />
+    <Compile Include="Services\DataAccessServices.cs" />
+    <Compile Include="Services\IDataAccessService.cs" />
+    <Compile Include="Services\LocalDataService.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\EmployeeInfoView.xaml.cs">
