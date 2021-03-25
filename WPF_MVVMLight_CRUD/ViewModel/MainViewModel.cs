@@ -24,8 +24,8 @@ namespace WPF_MVVMLight_CRUD.ViewModel
             get { return _Employees; }
             set
             {
-                _Employees = value;
-                RaisePropertyChanged("Employees");
+                Set("Employees", ref _Employees, value);
+
             }
         }
 
@@ -40,8 +40,7 @@ namespace WPF_MVVMLight_CRUD.ViewModel
             get { return _EmpInfo; }
             set
             {
-                _EmpInfo = value;
-                RaisePropertyChanged("EmpInfo");
+                Set("EmpInfo", ref _EmpInfo, value);
             }
         }
 
@@ -55,8 +54,7 @@ namespace WPF_MVVMLight_CRUD.ViewModel
             get { return _EmpName; }
             set 
             {
-                _EmpName = value;
-                RaisePropertyChanged("EmpName");
+                Set("EmpName", ref _EmpName, value);
             }
         }
 
@@ -108,7 +106,7 @@ namespace WPF_MVVMLight_CRUD.ViewModel
             EmpInfo.EmpNo =  _serviceProxy.CreateEmployee(emp);
             if(EmpInfo.EmpNo!=0)
             { 
-                Employees.Add(EmpInfo);
+                Employees.Add(_serviceProxy.GetEmpoyee(EmpInfo.EmpNo));
                 RaisePropertyChanged("EmpInfo");
             }
         }
